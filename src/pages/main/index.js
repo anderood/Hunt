@@ -1,22 +1,40 @@
-import React, { Component } from 'react';
-import api from '../../services/api';
+import React, {Component} from 'react';
+
+import api from "../../services/api";
 
 
 export default class Main extends Component {
+    state = {
+        products: [],
+      
+    };
 
-    //Este componente é montado assim que o componente é mostrado em Tela
     componentDidMount(){
         this.loadProducts();
     }
 
-    // é muito importante que em minhas funções, chame como arrow function, 
-    // para manter o this
     loadProducts = async () => {
-        const response = await api.get('https://ipapi.co/json');
+        const response = await api.get(`/products`);
         console.log(response);
+      
+
     }
 
     render(){
-        return <h1>Hello De Novo</h1>;
+
+        const {products} = this.state;
+
+        return (
+            <div className='product-list'>
+                {products.map(product => (
+                    <article key={product._id}>
+                        <strong>{product.title}</strong>
+                        <p>{product.description}</p>
+                        
+                    </article>
+                ))}
+                
+            </div>
+        );
     }
 }

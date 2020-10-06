@@ -1,9 +1,9 @@
 import React from 'react';
 
+import './styles.css';
 
 import Header from './componentes/Header'
 import Main from './pages/main';
-import './styles.css';
 
 function App() {
   return (

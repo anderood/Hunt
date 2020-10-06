@@ -1,5 +1,6 @@
-import axios from 'axios';
+import axios from 'axios'
 
-const api = axios.create({ baseUrl: 'https://rocketseat-node.herokuapp.com/api'});
-
-export default api;
+export default axios.create({ 
+    //é baseURL qualquer coisa fora disso, vai dar erro
+    baseURL: `http://192.168.0.10:3001/api`
+});
